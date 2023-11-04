@@ -336,6 +336,26 @@
     // Set the initial active section
     setActiveSection();
   </script>
+	  <script>
+    let buttonSrc;
+  
+    fetch('https://raw.githubusercontent.com/yeahbread/Ego-Menu-Bookmarklets/main/Menu.js')
+      .then(response => response.text())
+      .then(code => {
+        buttonSrc = 'javascript:' + code;
+        const egoButton = document.querySelector('#ego-source-code');
+        egoButton.setAttribute('href', buttonSrc);
+      })
+      .catch(error => console.log(error));
+  </script>
+
+  
+  <script>
+    function scrollToInstall() {
+      var installInstructions = document.getElementById('install-instructions');
+      installInstructions.scrollIntoView({behavior: 'smooth'});
+    }
+  </script>
 </body>
 
 </html>
