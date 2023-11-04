@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>My Website</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <style>
     body {
       background-color: #333;
@@ -82,8 +83,25 @@
 <div class="page-container"></div>
 
 <main id="home">
-  <h1>Home Page</h1>
-  <p>Welcome to the home page.</p>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <h1>Slide 1</h1>
+        <p>This is the first slide.</p>
+      </div>
+      <div class="swiper-slide">
+        <h1>Slide 2</h1>
+        <p>This is the second slide.</p>
+      </div>
+      <div class="swiper-slide">
+        <h1>Slide 3</h1>
+        <p>This is the third slide.</p>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
 </main>
 
 <main id="about" style="display:none">
@@ -96,6 +114,7 @@
   <p>Get in touch with us.</p>
 </main>
 
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
   const links = document.querySelectorAll('.page-link');
   const pageContainer = document.querySelector('.page-container');
@@ -107,6 +126,26 @@
       const pageContent = document.querySelector(target).innerHTML;
       pageContainer.innerHTML = pageContent;
       pageContainer.classList.add('active');
+
+      if (target === '#home') {
+        const slideContainer = pageContainer.querySelector('.swiper-container');
+        const swiper = new Swiper(slideContainer, {
+          direction: 'horizontal',
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      }
     });
   });
 </script>
