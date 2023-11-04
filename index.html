@@ -1,134 +1,71 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
-<title>Simple Website</title> 
-<style> 
-body { background-color: #333; } 
-header { 
-    background-color: #fff; 
-    color: #333; 
-    padding: 20px; 
-    text-align: center; 
-} 
-nav { 
-    float: left; 
-    width: 20%; 
-    height: 800px;
-    background-color: #f1f1f1; 
-    padding: 20px; 
-    margin-top: 30px;
-} 
-nav ul { 
-    list-style-type: none; 
-    padding: 0; 
-} 
-nav li { 
-    margin-bottom: 10px; 
-    font-size: 20px; 
-} 
-main { 
-    float: left; 
-    width: 80%; 
-    background-color: #fff; 
-    padding: 20px; 
-    margin-top: 30px; 
-} 
-h1, h2, p { 
-    color: #333; 
-    font-family: Arial, sans-serif; 
-    font-size: 20px; 
-} 
-</style> 
-</head> 
-<body> 
-<header> 
-<h1>Simple Website</h1> 
-</header> 
-<nav> 
-<ul> 
-<li><a href="#home">Home</a></li> 
-<li><a href="#about">About</a></li> 
-<li><a href="#services">Services</a></li> 
-<li><a href="#contact">Contact</a></li> 
-</ul> 
-</nav> 
-<main> 
-<h2 id="home">Home</h2> 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id sapien enim. Quisque vel neque mollis velit laoreet suscipit id quis justo. Fusce sit amet volutpat mi. Duis sollicitudin pharetra velit, at luctus magna fermentum eget.</p> 
-<h2 id="about">About</h2> 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id sapien enim. Quisque vel neque mollis velit laoreet suscipit id quis justo. Fusce sit amet volutpat mi. Duis sollicitudin pharetra velit, at luctus magna fermentum eget.</p> 
-<h2 id="services">Services</h2> 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id sapien enim. Quisque vel neque mollis velit laoreet suscipit id quis justo. Fusce sit amet volutpat mi. Duis sollicitudin pharetra velit, at luctus magna fermentum eget.</p> 
-<h2 id="contact">Contact</h2> 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id sapien enim. Quisque vel neque mollis velit laoreet suscipit id quis justo. Fusce sit amet volutpat mi. Duis sollicitudin pharetra velit, at luctus magna fermentum eget.</p> 
-</main> 
-</body> 
-</html> 
-
-CSS Code:
-
-body { 
-    background-color: #333; 
-} 
-
-header { 
-    background-color: #fff; 
-    color: #333; 
-    padding: 20px; 
-    text-align: center; 
-} 
-
-nav { 
-    float: left; 
-    width: 20%; 
-    height: 800px;
-    background-color: #f1f1f1; 
-    padding: 20px; 
-    margin-top: 30px;
-} 
-
-nav ul { 
-    list-style-type: none; 
-    padding: 0; 
-} 
-
-nav li { 
-    margin-bottom: 10px; 
-    font-size: 20px; 
-} 
-
-main { 
-    float: left; 
-    width: 80%; 
-    background-color: #fff; 
-    padding: 20px; 
-    margin-top: 30px; 
-} 
-
-h1, h2, p { 
-    color: #333; 
-    font-family: Arial, sans-serif; 
-    font-size: 20px; 
-} 
-
-nav a { 
-    text-decoration: none; 
-    color: #333; 
-    font-family: Arial, sans-serif; 
-    font-size: 20px; 
-} 
-
-nav a:hover { 
-    color: #fff; 
-    background-color: #333; 
-} 
-
-h2 { 
-    padding-top: 20px; 
-} 
-
-@media only screen and (max-width: 600px) { 
-    nav, main { 
-        width: 100%; 
-    } 
-} 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    <style>
+      body {
+        background-color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="home">
+        <h1>Welcome to my website</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet sapien laoreet, pulvinar velit at, hendrerit velit. Morbi eu tempus nulla. Fusce ac nulla bibendum, gravida tellus non, suscipit magna. Proin vel magna turpis. Duis vel facilisis magna. Nulla facilisi.</p>
+      </section>
+      <section id="about" style="display: none;">
+        <h1>About us</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida consequat eros fermentum feugiat. Vivamus sapien nisl, pharetra sed ultrices vitae, dapibus eu mauris.</p>
+      </section>
+      <section id="services" style="display: none;">
+        <h1>Our services</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla laoreet, purus non malesuada tincidunt, enim ante sodales lorem, non fringilla felis urna non purus. Nam elementum odio in magna aliquet, a tempor lectus ullamcorper.</p>
+      </section>
+      <section id="contact" style="display: none;">
+        <h1>Contact us</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod aliquam felis sed pulvinar. Praesent molestie mauris vitae fringilla bibendum. Ut commodo erat a mi lobortis, quis rhoncus turpis placerat. Nam commodo justo ut odio blandit laoreet. Ut tincidunt nec nisi at porttitor. Integer ultricies sapien ut odio ultricies, ac iaculis lorem bibendum.</p>
+      </section>
+    </main>
+    <script>
+      const menuItems = document.querySelectorAll('header nav ul li a');
+      
+      menuItems.forEach(item => {
+        item.addEventListener('click', event => {
+          menuItems.forEach(item => {
+            item.classList.remove('active');
+            document.getElementById(item.getAttribute('href').substr(1)).style.display = 'none';
+          });
+          event.target.classList.add('active');
+          document.getElementById(event.target.getAttribute('href').substr(1)).style.display = 'block';
+          history.pushState(null, null, event.target.getAttribute('href'));
+          event.preventDefault();
+        });
+      });
+      
+      window.addEventListener('popstate', () => {
+        const currentUrl = window.location.href;
+        const currentSectionId = currentUrl.split('#')[1];
+        const currentSection = document.getElementById(currentSectionId);
+        const currentMenuItem = document.querySelector(`header nav ul li a[href='#${currentSectionId}']`);
+        menuItems.forEach(item => {
+          item.classList.remove('active');
+          document.getElementById(item.getAttribute('href').substr(1)).style.display = 'none';
+        });
+        currentMenuItem.classList.add('active');
+        currentSection.style.display = 'block';
+      });
+    </script>
+  </body>
+</html>
