@@ -235,6 +235,15 @@
       transform: translate(1mm, -1mm) skewX(5deg) scale(1.03);
       text-shadow: -3px 3px 0 black;
     }
+    
+    .hidden {
+      display: none;
+    }
+    
+    .active {
+      display: block;
+    }
+    
   </style>
 </head>
 
@@ -253,7 +262,7 @@
       <h2>Home</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, harum autem explicabo quidem aperiam deserunt, repellendus dolorum dignissimos iusto aliquid, ullam fuga saepe consequatur nobis accusamus? Cupiditate eos maiores quo!</p>
     </section>
-    <section id="Ego-Menu">
+    <section id="Ego-Menu" class="hidden">
   <button id="get-ego" onclick="scrollToInstall()">Get Ego</button>
 
   <div id="install-instructions">
@@ -269,11 +278,11 @@
 </div>
 
     </section>
-    <section id="services">
+    <section id="services" class="hidden">
       <h2>Services</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, harum autem explicabo quidem aperiam deserunt, repellendus dolorum dignissimos iusto aliquid, ullam fuga saepe consequatur nobis accusamus? Cupiditate eos maiores quo!</p>
     </section>
-    <section id="contact">
+    <section id="contact" class="hidden">
       <h2>Contact</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, harum autem explicabo quidem aperiam deserunt, repellendus dolorum dignissimos iusto aliquid, ullam fuga saepe consequatur nobis accusamus? Cupiditate eos maiores quo!</p>
     </section>
@@ -284,11 +293,11 @@
       const sectionId = window.location.hash.substr(1);
 
       // Hide all sections
-      document.querySelectorAll('section').forEach(section => section.classList.remove('active'));
+      document.querySelectorAll('section').forEach(section => section.classList.add('hidden'));
 
       // Show the active section
       const activeSection = document.getElementById(sectionId) || document.getElementById('home');
-      activeSection.classList.add('active');
+      activeSection.classList.remove('hidden');
 
       // Update the active menu item
       const activeMenuItem = document.querySelector(`nav a[href="#${activeSection.id}"]`);
