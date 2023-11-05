@@ -396,6 +396,7 @@ header img:hover {
       document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
       activeMenuItem.classList.add('active');
 
+
       setTimeout(() => activeSection.classList.remove('fade-in'), 400);
     }
 
@@ -422,11 +423,13 @@ header img:hover {
       installInstructions.scrollIntoView({behavior: 'smooth'});
     }
   </script>
-  <script>
+<script>
     const logoElement = document.getElementById('HomeLinkIcon');
   
     logoElement.addEventListener('click', () => {
-      window.location.href = 'https://yeahbread.github.io/';
+      if (window.location.href !== 'https://yeahbread.github.io/') { 
+        window.location.href = 'https://yeahbread.github.io/';
+      }
     });
   </script>
 </body>
