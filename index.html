@@ -319,18 +319,18 @@ header img:hover {
     <header>
         <img id="HomeLinkIcon" src="https://cdn.glitch.global/efbbe251-937e-4c16-898c-cdfb9e3d65f4/smallE?v=1697857602944" alt="Logo">
         <nav>
-          <a href="#home">Landing</a>
-          <a href="#Ego-Menu">Ego Menu</a>
+          <a href="#landing">Landing</a>
+          <a href="#ego-menu">Ego Menu</a>
           <a href="#services">Services</a>
           <a href="#contact">Contact</a>
         </nav>
       </header>
   <main>
-    <section id="home" class="hidden fade-in">
+    <section id="landing" class="hidden fade-in">
       <h2>Home</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, harum autem explicabo quidem aperiam deserunt, repellendus dolorum dignissimos iusto aliquid, ullam fuga saepe consequatur nobis accusamus? Cupiditate eos maiores quo!</p>
     </section>
-    <section id="Ego-Menu" class="hidden fade-in">
+    <section id="ego-menu" class="hidden fade-in">
       <h2>Features:</h2>
       <div class="features">
         <div class="feature">
@@ -389,7 +389,7 @@ header img:hover {
 
       document.querySelectorAll('section').forEach(section => section.classList.add('hidden', 'fade-in'));
 
-      const activeSection = document.getElementById(sectionId) || document.getElementById('home');
+      const activeSection = document.getElementById(sectionId) || document.getElementById('landing');
       activeSection.classList.remove('hidden');
 
       const activeMenuItem = document.querySelector(`nav a[href="#${activeSection.id}"]`);
@@ -427,7 +427,8 @@ header img:hover {
     const logoElement = document.getElementById('HomeLinkIcon');
   
     logoElement.addEventListener('click', () => {
-      if (window.location.href !== 'https://yeahbread.github.io/') { 
+      const currentUrl = window.location.href;
+      if (currentUrl !== 'https://yeahbread.github.io/' && !currentUrl.includes('yeahbread.github.io/#landing')) {
         window.location.href = 'https://yeahbread.github.io/';
       }
     });
