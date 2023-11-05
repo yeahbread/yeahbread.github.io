@@ -129,16 +129,55 @@
       width: 20vmax;
       box-shadow: inset 1vmin -1vmin 0px 0.5mm #00000042;
     }
-        .Credits {
-      background-color: #444444a3;
-      border-radius: 1vmin;
-      margin: 0.5em;
-      padding: 1em;
-      text-align: left;
-      width: 20vmax;
-      box-shadow: inset 1vmin -1vmin 0px 0.5mm #00000042;
+    .Credits {
+    background-color: #444444a3;
+    border-radius: 1vmin;
+    margin: 0.5em;
+    padding: 1em;
+    text-align: left;
+    width: 20vmax;
+    box-shadow: inset 1vmin -1vmin 0px 0.5mm #00000042;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+}
+.Credits {
+    background-color: #444444a3;
+    border-radius: 1vmin;
+    margin: 4.5em;
+    padding: 1em;
+    text-align: left;
+    width: 20vmax;
+    box-shadow: inset 1vmin -1vmin 0px 0.5mm #00000042;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+    width: 60%;
+}
+.Credits:hover {
+      transform: translate(1mm, -2mm) translateX(-50%);
+      box-shadow: inset 1vmin -1vmin 0px 0.5mm #00000042, -1vmin 1vmin 0px 0mm #000000, -3vmin 3vmin 20px 0mm #0000003d !important;
+      position: relative;
     }
-
+    .Credits h3 {
+      font-size: 1.2em;
+      margin-top: 0;
+      margin-bottom: 0.5em;
+    }
+    .Credits h3:hover {
+      transform: translate(1mm, -1mm) scale(1.03) skewX(5deg);
+      text-shadow: -3px 3px 0 black !important;
+    }
+    .Credits p {
+        margin-top: 0;
+        margin-bottom: 0.5em;
+        font-size: 2vmin;
+        padding: 0.3rem;
+    }
+    .Credits p:hover {
+      transform: translate(1mm, -1mm) scale(1.03) skewX(5deg);
+      text-shadow: -3px 3px 0 black !important;
+    }
 
     .feature:hover {
       transform: translate(1mm, -2mm);
