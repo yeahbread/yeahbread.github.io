@@ -295,6 +295,30 @@ section.showing {
   top: 0;
   transition: opacity 0.4s ease 0.4s, margin-top 0.4s ease 0.4s, top 0.4s ease 0.4s, z-index 0.4s ease 0.4s;
 }
+
+section.sliding-down {
+  margin-top: 0;
+  margin-bottom: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  transform: translateY(0%);
+  transition: transform 0.4s ease 0.4s, opacity 0.4s ease 0.8s;
+}
+
+section.sliding-up {
+  margin-top: 0;
+  margin-bottom: 0;
+  position: absolute;
+  top: -100%;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  transform: translateY(100%);
+  transition: transform 0.4s ease, opacity 0.4s ease 0.2s;
+}
   </style>
 </head>
 
@@ -370,20 +394,24 @@ section.showing {
 function setActiveSection() {
   const sectionId = window.location.hash.substr(1);
 
-  document.querySelectorAll('section').forEach(section => {
-    section.classList.add('hidden');
+  const oldSection = document.querySelector('section.showing');
+  if (oldSection) {
+    oldSection.classList.add('sliding-down');
     setTimeout(() => {
-      section.classList.remove('showing');
-    }, 400);
-  });
+      oldSection.classList.add('hidden');
+      oldSection.classList.remove('showing', 'sliding-down');
+    }, 800);
+  }
 
-  const activeSection = document.getElementById(sectionId) || document.getElementById('home');
-  activeSection.classList.remove('hidden');
+  const newSection = document.getElementById(sectionId) || document.getElementById('home');
+  newSection.classList.remove('hidden');
+  newSection.classList.add('sliding-up');
   setTimeout(() => {
-    activeSection.classList.add('showing');
-  }, 50);
+    newSection.classList.remove('sliding-up');
+    newSection.classList.add('showing');
+  }, 200);
 
-  const activeMenuItem = document.querySelector(`nav a[href="#${activeSection.id}"]`);
+  const activeMenuItem = document.querySelector(`nav a[href="#${newSection.id}"]`);
   document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
   activeMenuItem.classList.add('active');
 }
