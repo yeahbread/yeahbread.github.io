@@ -278,9 +278,14 @@
     }
     header img {
     height: 5rem;
-    position: absolute;
-    left: 50%;;
+    position: relative;
+    left: 50%;
     transform: translateX(-50%);
+    padding: 1vmin;
+}
+header img:hover {
+    transform: scale(1.03) translateX(-50%) translate(1mm, -1mm) skewX(5deg);
+    filter: drop-shadow(-3px 3px 0px black) drop-shadow(-3px 3px 1px black) drop-shadow(-3px 3px 0px black) drop-shadow(-3px 3px 2px black);
 }
   </style>
 </head>
