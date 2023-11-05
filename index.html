@@ -510,6 +510,10 @@ let modal = document.querySelector('.modal');
 if (!modal) {
   modal = document.createElement('div');
   modal.className = 'modal';
+  modal.style.display = 'none';
+  const p = document.createElement('p');
+  p.textContent = 'Now drag me up to the bookmark bar.';
+  modal.appendChild(p);
   document.body.appendChild(modal);
 }
 
