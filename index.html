@@ -274,14 +274,6 @@
       transform: scale(1.03) skewX(5deg) translate(1mm, -1mm);
       text-shadow: -3px 3px 1px black;
     }
-    .fade-out {
-  opacity: 1;
-  transition: opacity 0.4s ease;
-}
-
-.fade-out.hidden {
-  opacity: 0;
-}
   </style>
 </head>
 
@@ -355,22 +347,23 @@
 
   <script>
     function setActiveSection() {
-    // Get the previous and current section IDs from the URL query
-    const prevSectionId = document.querySelector('.active').getAttribute('href').substr(1);
-    const sectionId = window.location.hash.substr(1);
+      // Get the section ID from the URL query
+      const sectionId = window.location.hash.substr(1);
 
-    // Hide the previous section with fade-out effect
-    const prevSection = document.getElementById(prevSectionId);
-    prevSection.classList.add('fade-out', 'hidden');
+      // Hide all sections
+      document.querySelectorAll('section').forEach(section => section.classList.add('hidden', 'fade-in'));
 
-    // Show the active section with fade-in effect
-    const activeSection = document.getElementById(sectionId) || document.getElementById('home');
-    activeSection.classList.remove('hidden', 'fade-out');
+      // Show the active section
+      const activeSection = document.getElementById(sectionId) || document.getElementById('home');
+      activeSection.classList.remove('hidden');
 
-    // Update the active menu item
-    const activeMenuItem = document.querySelector(`nav a[href="#${activeSection.id}"]`);
-    document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
-    activeMenuItem.classList.add('active');
+      // Update the active menu item
+      const activeMenuItem = document.querySelector(`nav a[href="#${activeSection.id}"]`);
+      document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
+      activeMenuItem.classList.add('active');
+
+      // Wait for the transition to end, then remove the "fade-in" class from the active section
+      setTimeout(() => activeSection.classList.remove('fade-in'), 400);
     }
 
     // Listen for URL hash changes and update the active section accordingly
