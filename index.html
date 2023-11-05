@@ -247,58 +247,28 @@
     }
     
     .hidden {
+      opacity: 0;
       display: none;
     }
     
-    .active {
-        display: block;
-        font-size: 1.5rem;
-        margin: -3mm;
-        border-bottom: 0.2rem white solid;
+    section.active {
+      opacity: 1;
     }
+    
     p {
         font-size: 1.2rem;
         padding: 1.3rem;
     }
-    p:hover {
-        transform: scale(1.03) skewX(5deg) translate(1mm, -1mm);
-        text-shadow: -3px 3px 1px black;
+
+    section {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    section.active {
+      opacity: 1;
     }
 
-    /* Fade effect between HREF pages */
-    .previous-href {
-      animation-name: slide-down;
-      animation-duration: 0.4s;
-      animation-timing-function: ease;
-      animation-fill-mode: forwards;
-    }
-
-    .current-href {
-      animation-name: slide-from-top;
-      animation-duration: 0.4s;
-      animation-timing-function: ease;
-      animation-fill-mode: forwards;
-    }
-
-    @keyframes slide-down {
-      from {
-        transform: translateY(0);
-      }
-
-      to {
-        transform: translateY(100%);
-      }
-    }
-
-    @keyframes slide-from-top {
-      from {
-        transform: translateY(-100%);
-      }
-
-      to {
-        transform: translateY(0);
-      }
-    }
   </style>
 </head>
 
@@ -306,7 +276,7 @@
   <header>
     <h1>My Website</h1>
     <nav>
-      <a href="#home" class="active">Home</a>
+      <a href="#home">Home</a>
       <a href="#Ego-Menu">Ego Menu</a>
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
@@ -318,46 +288,48 @@
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, harum autem explicabo quidem aperiam deserunt, repellendus dolorum dignissimos iusto aliquid, ullam fuga saepe consequatur nobis accusamus? Cupiditate eos maiores quo!</p>
     </section>
     <section id="Ego-Menu" class="hidden">
-      <h2>Features:</h2>
-      <div class="features">
-        <div class="feature">
-          <h3>Easy "install"</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
-        </div>
+      	<h2>Features:</h2>
+	<div class="features">
+		<div class="feature">
+			<h3>Easy "install"</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
+		</div>
+		
+		<div class="feature">
+			<h3>Multi-use</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
+		</div>
+		
+		<div class="feature">
+			<h3>Hides away</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
+		</div>
+		
+		<div class="feature">
+			<h3>Chatroom Integration</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
+		</div>
+		
+		<div class="feature">
+			<h3>Endless games</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
+		</div>
+	</div>
 
-        <div class="feature">
-          <h3>Multi-use</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
-        </div>
+  <button id="get-ego" onclick="scrollToInstall()">Get Ego</button>
 
-        <div class="feature">
-          <h3>Hides away</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
-        </div>
+  <div id="install-instructions">
+    <h2>Installation Instructions</h2>
+    <ol id="instruction-holder">
+        <li id="OneInstruction">Press CTRL+SHIFT+B on Windows/Linux or COMMAND+SHIFT+B on Mac to show the bookmarks bar at the top of your browser window.</li>
+        <li id="OneInstruction">Drag the "Drag Me!" button from below to the bookmarks bar. The installation is complete.</li>
+        <button id="ego-source-code" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', buttonSrc)">Drag Me!</button>
+        <li id="OneInstruction">Click on the bookmark you just created to activate the Ego Menu on the current page. The Ego Menu popup should appear when you hover over the bottom left corner of the website.</li>
+        <li id="OneInstruction">Note that if you navigate to a new page, you might need to activate the menu again using the bookmark. Also, please note that the Ego Menu may not work on some strict websites due to security reasons.</li>
+    </ol>
 
-        <div class="feature">
-          <h3>Chatroom Integration</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
-        </div>
+</div>
 
-        <div class="feature">
-          <h3>Endless games</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
-        </div>
-      </div>
-
-      <button id="get-ego" onclick="scrollToInstall()">Get Ego</button>
-
-      <div id="install-instructions">
-        <h2>Installation Instructions</h2>
-        <ol id="instruction-holder">
-            <li id="OneInstruction">Press CTRL+SHIFT+B on Windows/Linux or COMMAND+SHIFT+B on Mac to show the bookmarks bar at the top of your browser window.</li>
-            <li id="OneInstruction">Drag the "Drag Me!" button from below to the bookmarks bar. The installation is complete.</li>
-            <button id="ego-source-code" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', buttonSrc)">Drag Me!</button>
-            <li id="OneInstruction">Click on the bookmark you just created to activate the Ego Menu on the current page. The Ego Menu popup should appear when you hover over the bottom left corner of the website.</li>
-            <li id="OneInstruction">Note that if you navigate to a new page, you might need to activate the menu again using the bookmark. Also, please note that the Ego Menu may not work on some strict websites due to security reasons.</li>
-        </ol>
-      </div>
     </section>
     <section id="services" class="hidden">
       <h2>Services</h2>
@@ -368,11 +340,21 @@
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, harum autem explicabo quidem aperiam deserunt, repellendus dolorum dignissimos iusto aliquid, ullam fuga saepe consequatur nobis accusamus? Cupiditate eos maiores quo!</p>
     </section>
   </main>
-
   <script>
+    function scrollToInstall() {
+      var installInstructions = document.getElementById('install-instructions');
+      installInstructions.scrollIntoView({behavior: 'smooth'});
+    }
+
     function setActiveSection() {
       // Get the section ID from the URL query
       const sectionId = window.location.hash.substr(1);
+
+      // Remove active class from previously active section
+      const prevActiveSection = document.querySelector('section.active');
+      if (prevActiveSection) {
+        prevActiveSection.classList.remove('active');
+      }
 
       // Hide all sections
       document.querySelectorAll('section').forEach(section => section.classList.add('hidden'));
@@ -380,19 +362,12 @@
       // Show the active section
       const activeSection = document.getElementById(sectionId) || document.getElementById('home');
       activeSection.classList.remove('hidden');
+      activeSection.classList.add('active');
 
-      // Update the active menu item with fade effect
-      const previousHref = document.querySelector('nav .active');
-      previousHref.classList.add('previous-href');
-      previousHref.addEventListener('animationend', () => {
-        previousHref.classList.remove('previous-href', 'active');
-      });
-
-      const currentHref = document.querySelector(`nav a[href="#${activeSection.id}"]`);
-      currentHref.classList.add('current-href', 'active');
-      currentHref.addEventListener('animationend', () => {
-        currentHref.classList.remove('current-href');
-      });
+      // Update the active menu item
+      const activeMenuItem = document.querySelector(`nav a[href="#${activeSection.id}"]`);
+      document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
+      activeMenuItem.classList.add('active');
     }
 
     // Listen for URL hash changes and update the active section accordingly
@@ -401,7 +376,6 @@
     // Set the initial active section
     setActiveSection();
   </script>
-
   <script>
     let buttonSrc;
 
@@ -413,13 +387,6 @@
         egoButton.setAttribute('href', buttonSrc);
       })
       .catch(error => console.log(error));
-  </script>
-
-  <script>
-    function scrollToInstall() {
-      var installInstructions = document.getElementById('install-instructions');
-      installInstructions.scrollIntoView({behavior: 'smooth'});
-    }
   </script>
 </body>
 
