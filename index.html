@@ -264,61 +264,41 @@
         transform: scale(1.03) skewX(5deg) translate(1mm, -1mm);
         text-shadow: -3px 3px 1px black;
     }
-    section {
-  position: relative;
-}
-
-section.hidden {
-  opacity: 0;
-  height: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 0;
-  overflow: hidden;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: -1;
-  transition: opacity 0.4s ease, height 0.4s ease, margin-top 0.4s ease, top 0.4s ease, z-index 0.4s 0.4s;
-}
-
-section.showing {
-  opacity: 1;
-  height: max-content;
-  margin-top: 2em;
-  margin-bottom: 1em;
-  padding: 2em;
-  overflow: visible;
-  position: static;
-  z-index: 1;
-  top: 0;
-  transition: opacity 0.4s ease 0.4s, margin-top 0.4s ease 0.4s, top 0.4s ease 0.4s, z-index 0.4s ease 0.4s;
-}
-
-section.sliding-down {
-  margin-top: 0;
-  margin-bottom: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  transform: translateY(0%);
-  transition: transform 0.4s ease 0.4s, opacity 0.4s ease 0.8s;
-}
-
-section.sliding-up {
-  margin-top: 0;
-  margin-bottom: 0;
-  position: absolute;
-  top: -100%;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  transform: translateY(100%);
-  transition: transform 0.4s ease, opacity 0.4s ease 0.2s;
-}
+    
+    /* Slide animations */
+    @keyframes slide-down {
+      from {
+        transform: translateY(0);
+      }
+    
+      to {
+        transform: translateY(100%);
+      }
+    }
+    
+    .slide-down {
+      animation-name: slide-down;
+      animation-duration: 0.4s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+    }
+    
+    @keyframes slide-from-top {
+      from {
+        transform: translateY(-100%);
+      }
+    
+      to {
+        transform: translateY(0);
+      }
+    }
+    
+    .slide-from-top {
+      animation-name: slide-from-top;
+      animation-duration: 0.4s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+    }
   </style>
 </head>
 
@@ -333,52 +313,51 @@ section.sliding-up {
     </nav>
   </header>
   <main>
-  <section id="home" class="hidden">
+    <section id="home" class="hidden">
       <h2>Home</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, harum autem explicabo quidem aperiam deserunt, repellendus dolorum dignissimos iusto aliquid, ullam fuga saepe consequatur nobis accusamus? Cupiditate eos maiores quo!</p>
     </section>
     <section id="Ego-Menu" class="hidden">
-      	<h2>Features:</h2>
-	<div class="features">
-		<div class="feature">
-			<h3>Easy "install"</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
-		</div>
-		
-		<div class="feature">
-			<h3>Multi-use</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
-		</div>
-		
-		<div class="feature">
-			<h3>Hides away</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
-		</div>
-		
-		<div class="feature">
-			<h3>Chatroom Integration</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
-		</div>
-		
-		<div class="feature">
-			<h3>Endless games</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
-		</div>
-	</div>
+      <h2>Features:</h2>
+      <div class="features">
+        <div class="feature">
+          <h3>Easy "install"</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
+        </div>
 
-  <button id="get-ego" onclick="scrollToInstall()">Get Ego</button>
+        <div class="feature">
+          <h3>Multi-use</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
+        </div>
 
-  <div id="install-instructions">
-    <h2>Installation Instructions</h2>
-    <ol id="instruction-holder">
-        <li id="OneInstruction">Press CTRL+SHIFT+B on Windows/Linux or COMMAND+SHIFT+B on Mac to show the bookmarks bar at the top of your browser window.</li>
-        <li id="OneInstruction">Drag the "Drag Me!" button from below to the bookmarks bar. The installation is complete.</li>
-        <button id="ego-source-code" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', buttonSrc)">Drag Me!</button>
-        <li id="OneInstruction">Click on the bookmark you just created to activate the Ego Menu on the current page. The Ego Menu popup should appear when you hover over the bottom left corner of the website.</li>
-        <li id="OneInstruction">Note that if you navigate to a new page, you might need to activate the menu again using the bookmark. Also, please note that the Ego Menu may not work on some strict websites due to security reasons.</li>
-    </ol>
+        <div class="feature">
+          <h3>Hides away</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
+        </div>
 
-</div>
+        <div class="feature">
+          <h3>Chatroom Integration</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Endless games</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
+        </div>
+      </div>
+
+      <button id="get-ego" onclick="scrollToInstall()">Get Ego</button>
+
+      <div id="install-instructions">
+        <h2>Installation Instructions</h2>
+        <ol id="instruction-holder">
+          <li id="OneInstruction">Press CTRL+SHIFT+B on Windows/Linux or COMMAND+SHIFT+B on Mac to show the bookmarks bar at the top of your browser window.</li>
+          <li id="OneInstruction">Drag the "Drag Me!" button from below to the bookmarks bar. The installation is complete.</li>
+          <button id="ego-source-code" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', buttonSrc)">Drag Me!</button>
+          <li id="OneInstruction">Click on the bookmark you just created to activate the Ego Menu on the current page. The Ego Menu popup should appear when you hover over the bottom left corner of the website.</li>
+          <li id="OneInstruction">Note that if you navigate to a new page, you might need to activate the menu again using the bookmark. Also, please note that the Ego Menu may not work on some strict websites due to security reasons.</li>
+        </ol>
+      </div>
 
     </section>
     <section id="services" class="hidden">
@@ -391,36 +370,43 @@ section.sliding-up {
     </section>
   </main>
   <script>
-function setActiveSection() {
-  const sectionId = window.location.hash.substr(1);
+    function setActiveSection() {
+      // Get the section ID from the URL query
+      const sectionId = window.location.hash.substr(1);
 
-  const oldSection = document.querySelector('section.showing');
-  if (oldSection) {
-    oldSection.classList.add('sliding-down');
-    setTimeout(() => {
-      oldSection.classList.add('hidden');
-      oldSection.classList.remove('showing', 'sliding-down');
-    }, 800);
-  }
+      // Hide all sections
+      document.querySelectorAll('section').forEach(section => section.classList.add('hidden'));
 
-  const newSection = document.getElementById(sectionId) || document.getElementById('home');
-  newSection.classList.remove('hidden');
-  newSection.classList.add('sliding-up');
-  setTimeout(() => {
-    newSection.classList.remove('sliding-up');
-    newSection.classList.add('showing');
-  }, 200);
+      // Animate the previous HREF element and remove the active class
+      const previousHref = document.querySelector('nav .active');
+      if (previousHref) {
+        previousHref.classList.add('slide-down');
+        previousHref.addEventListener('animationend', () => {
+          previousHref.classList.remove('slide-down', 'active');
+        });
+      }
 
-  const activeMenuItem = document.querySelector(`nav a[href="#${newSection.id}"]`);
-  document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
-  activeMenuItem.classList.add('active');
-}
+      // Show the active section and animate the current HREF element
+      const activeSection = document.getElementById(sectionId) || document.getElementById('home');
+      activeSection.classList.remove('hidden');
+      const currentHref = document.querySelector(`nav a[href="#${activeSection.id}"]`);
+      currentHref.classList.add('slide-from-top', 'active');
+      currentHref.addEventListener('animationend', () => {
+        currentHref.classList.remove('slide-from-top');
+      });
+      
+      // Set the active class on the current HREF element
+      document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
+      currentHref.classList.add('active');
+    }
 
-window.addEventListener('hashchange', setActiveSection);
+    // Listen for URL hash changes and update the active section accordingly
+    window.addEventListener('hashchange', setActiveSection);
 
-setActiveSection();
+    // Set the initial active section
+    setActiveSection();
   </script>
-	  <script>
+  <script>
     let buttonSrc;
   
     fetch('https://raw.githubusercontent.com/yeahbread/Ego-Menu-Bookmarklets/main/Menu.js')
@@ -433,7 +419,6 @@ setActiveSection();
       .catch(error => console.log(error));
   </script>
 
-  
   <script>
     function scrollToInstall() {
       var installInstructions = document.getElementById('install-instructions');
