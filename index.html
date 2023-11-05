@@ -290,7 +290,9 @@
 header img:hover {
     transform: scale(1.03) translateX(-50%) translate(1mm, -1mm) skewX(5deg);
     filter: drop-shadow(-3px 3px 0px black) drop-shadow(-3px 3px 1px black) drop-shadow(-3px 3px 0px black) drop-shadow(-3px 3px 2px black);
+    cursor: pointer;
 }
+
 ::-webkit-scrollbar {
   width: 1.75mm;
 }
@@ -315,7 +317,7 @@ header img:hover {
 
 <body>
     <header>
-        <img src="https://cdn.glitch.global/efbbe251-937e-4c16-898c-cdfb9e3d65f4/smallE?v=1697857602944" alt="Logo">
+        <img id="HomeLinkIcon" src="https://cdn.glitch.global/efbbe251-937e-4c16-898c-cdfb9e3d65f4/smallE?v=1697857602944" alt="Logo">
         <nav>
           <a href="#home">Landing</a>
           <a href="#Ego-Menu">Ego Menu</a>
@@ -383,29 +385,22 @@ header img:hover {
 
   <script>
     function setActiveSection() {
-      // Get the section ID from the URL query
       const sectionId = window.location.hash.substr(1);
 
-      // Hide all sections
       document.querySelectorAll('section').forEach(section => section.classList.add('hidden', 'fade-in'));
 
-      // Show the active section
       const activeSection = document.getElementById(sectionId) || document.getElementById('home');
       activeSection.classList.remove('hidden');
 
-      // Update the active menu item
       const activeMenuItem = document.querySelector(`nav a[href="#${activeSection.id}"]`);
       document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
       activeMenuItem.classList.add('active');
 
-      // Wait for the transition to end, then remove the "fade-in" class from the active section
       setTimeout(() => activeSection.classList.remove('fade-in'), 400);
     }
 
-    // Listen for URL hash changes and update the active section accordingly
     window.addEventListener('hashchange', setActiveSection);
 
-    // Set the initial active section
     setActiveSection();
   </script>
   <script>
@@ -426,6 +421,13 @@ header img:hover {
       var installInstructions = document.getElementById('install-instructions');
       installInstructions.scrollIntoView({behavior: 'smooth'});
     }
+  </script>
+  <script>
+    const logoElement = document.getElementById('HomeLinkIcon');
+  
+    logoElement.addEventListener('click', () => {
+      window.location.href = 'https://yeahbread.github.io/';
+    });
   </script>
 </body>
 </html>
