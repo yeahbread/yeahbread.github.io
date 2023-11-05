@@ -394,7 +394,7 @@ header img:hover {
       activeSection.classList.remove('hidden');
 
       // Update the active menu item
-      const activeMenuItem = document.querySelector(`nav a[href="#${activeSection.id}"]`);
+      const activeMenuItem = document.querySelector(`nav a[href="${activeSection.id}"]`);
       document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
       activeMenuItem.classList.add('active');
 
