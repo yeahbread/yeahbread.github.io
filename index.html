@@ -489,5 +489,16 @@ a:hover {
       }
     });
   </script>
+  <script>
+    const button = document.getElementById('ego-source-code');
+const modal = document.createElement('div');
+modal.className = 'modal';
+
+button.addEventListener('dragstart', () => {
+  modal.style.display = 'block';
+  button.style.zIndex = '999999';
+  document.body.appendChild(modal);
+});
+  </script>
 </body>
 </html>
