@@ -317,10 +317,10 @@ header img:hover {
     <header>
         <img src="https://cdn.glitch.global/efbbe251-937e-4c16-898c-cdfb9e3d65f4/smallE?v=1697857602944" alt="Logo">
         <nav>
-          <a href="home">Landing</a>
-          <a href=" Ego-Menu">Ego Menu</a>
-          <a href="services">Services</a>
-          <a href="contact">Contact</a>
+          <a href="#home">Landing</a>
+          <a href="#Ego-Menu">Ego Menu</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
         </nav>
       </header>
   <main>
@@ -364,7 +364,7 @@ header img:hover {
         <ol id="instruction-holder">
           <li id="OneInstruction">Press CTRL+SHIFT+B on Windows/Linux or COMMAND+SHIFT+B on Mac to show the bookmarks bar at the top of your browser window.</li>
           <li id="OneInstruction">Drag the "Drag Me!" button from below to the bookmarks bar. The installation is complete.</li>
-          <a href="javascript:(function() {var s = document.createElement('script');s.type = 'text/javascript';s.src = 'https://yeahbread.github.io/Ego-Menu-Bookmarklets/Menu.js?v=' + Date.now();document.body.appendChild(s);})();"><button id="ego-source-code" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', buttonSrc)">Drag Me!</button></a>
+          <button id="ego-source-code" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', buttonSrc)">Drag Me!</button>
           <li id="OneInstruction">Click on the bookmark you just created to activate the Ego Menu on the current page. The Ego Menu popup should appear when you hover over the bottom left corner of the website.</li>
           <li id="OneInstruction">Note that if you navigate to a new page, you might need to activate the menu again using the bookmark. Also, please note that the Ego Menu may not work on some strict websites due to security reasons.</li>
         </ol>
@@ -394,7 +394,7 @@ header img:hover {
       activeSection.classList.remove('hidden');
 
       // Update the active menu item
-      const activeMenuItem = document.querySelector(`nav a[href="${sectionId}"]`);
+      const activeMenuItem = document.querySelector(`nav a[href="#${activeSection.id}"]`);
       document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
       activeMenuItem.classList.add('active');
 
