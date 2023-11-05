@@ -264,40 +264,40 @@
         transform: scale(1.03) skewX(5deg) translate(1mm, -1mm);
         text-shadow: -3px 3px 1px black;
     }
-    
-    /* Slide animations */
-    @keyframes slide-down {
-      from {
-        transform: translateY(0);
-      }
-    
-      to {
-        transform: translateY(100%);
-      }
-    }
-    
-    .slide-down {
+
+    /* Fade effect between HREF pages */
+    .previous-href {
       animation-name: slide-down;
       animation-duration: 0.4s;
       animation-timing-function: ease;
       animation-fill-mode: forwards;
     }
-    
-    @keyframes slide-from-top {
-      from {
-        transform: translateY(-100%);
-      }
-    
-      to {
-        transform: translateY(0);
-      }
-    }
-    
-    .slide-from-top {
+
+    .current-href {
       animation-name: slide-from-top;
       animation-duration: 0.4s;
       animation-timing-function: ease;
       animation-fill-mode: forwards;
+    }
+
+    @keyframes slide-down {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(100%);
+      }
+    }
+
+    @keyframes slide-from-top {
+      from {
+        transform: translateY(-100%);
+      }
+
+      to {
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
@@ -306,7 +306,7 @@
   <header>
     <h1>My Website</h1>
     <nav>
-      <a href="#home">Home</a>
+      <a href="#home" class="active">Home</a>
       <a href="#Ego-Menu">Ego Menu</a>
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
@@ -351,14 +351,13 @@
       <div id="install-instructions">
         <h2>Installation Instructions</h2>
         <ol id="instruction-holder">
-          <li id="OneInstruction">Press CTRL+SHIFT+B on Windows/Linux or COMMAND+SHIFT+B on Mac to show the bookmarks bar at the top of your browser window.</li>
-          <li id="OneInstruction">Drag the "Drag Me!" button from below to the bookmarks bar. The installation is complete.</li>
-          <button id="ego-source-code" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', buttonSrc)">Drag Me!</button>
-          <li id="OneInstruction">Click on the bookmark you just created to activate the Ego Menu on the current page. The Ego Menu popup should appear when you hover over the bottom left corner of the website.</li>
-          <li id="OneInstruction">Note that if you navigate to a new page, you might need to activate the menu again using the bookmark. Also, please note that the Ego Menu may not work on some strict websites due to security reasons.</li>
+            <li id="OneInstruction">Press CTRL+SHIFT+B on Windows/Linux or COMMAND+SHIFT+B on Mac to show the bookmarks bar at the top of your browser window.</li>
+            <li id="OneInstruction">Drag the "Drag Me!" button from below to the bookmarks bar. The installation is complete.</li>
+            <button id="ego-source-code" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', buttonSrc)">Drag Me!</button>
+            <li id="OneInstruction">Click on the bookmark you just created to activate the Ego Menu on the current page. The Ego Menu popup should appear when you hover over the bottom left corner of the website.</li>
+            <li id="OneInstruction">Note that if you navigate to a new page, you might need to activate the menu again using the bookmark. Also, please note that the Ego Menu may not work on some strict websites due to security reasons.</li>
         </ol>
       </div>
-
     </section>
     <section id="services" class="hidden">
       <h2>Services</h2>
@@ -369,6 +368,7 @@
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, harum autem explicabo quidem aperiam deserunt, repellendus dolorum dignissimos iusto aliquid, ullam fuga saepe consequatur nobis accusamus? Cupiditate eos maiores quo!</p>
     </section>
   </main>
+
   <script>
     function setActiveSection() {
       // Get the section ID from the URL query
@@ -377,27 +377,22 @@
       // Hide all sections
       document.querySelectorAll('section').forEach(section => section.classList.add('hidden'));
 
-      // Animate the previous HREF element and remove the active class
-      const previousHref = document.querySelector('nav .active');
-      if (previousHref) {
-        previousHref.classList.add('slide-down');
-        previousHref.addEventListener('animationend', () => {
-          previousHref.classList.remove('slide-down', 'active');
-        });
-      }
-
-      // Show the active section and animate the current HREF element
+      // Show the active section
       const activeSection = document.getElementById(sectionId) || document.getElementById('home');
       activeSection.classList.remove('hidden');
-      const currentHref = document.querySelector(`nav a[href="#${activeSection.id}"]`);
-      currentHref.classList.add('slide-from-top', 'active');
-      currentHref.addEventListener('animationend', () => {
-        currentHref.classList.remove('slide-from-top');
+
+      // Update the active menu item with fade effect
+      const previousHref = document.querySelector('nav .active');
+      previousHref.classList.add('previous-href');
+      previousHref.addEventListener('animationend', () => {
+        previousHref.classList.remove('previous-href', 'active');
       });
-      
-      // Set the active class on the current HREF element
-      document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
-      currentHref.classList.add('active');
+
+      const currentHref = document.querySelector(`nav a[href="#${activeSection.id}"]`);
+      currentHref.classList.add('current-href', 'active');
+      currentHref.addEventListener('animationend', () => {
+        currentHref.classList.remove('current-href');
+      });
     }
 
     // Listen for URL hash changes and update the active section accordingly
@@ -406,9 +401,10 @@
     // Set the initial active section
     setActiveSection();
   </script>
+
   <script>
     let buttonSrc;
-  
+
     fetch('https://raw.githubusercontent.com/yeahbread/Ego-Menu-Bookmarklets/main/Menu.js')
       .then(response => response.text())
       .then(code => {
