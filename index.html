@@ -375,7 +375,7 @@ a:hover {
     left: 0;
     right: 0;
     backdrop-filter: blur(2px);
-
+    pointer-events: none;
 }
   </style>
 </head>
@@ -504,14 +504,23 @@ a:hover {
     });
   </script>
   <script>
-    const button = document.getElementById('ego-source-code');
-const modal = document.createElement('div');
-modal.className = 'modal';
+const button = document.getElementById('ego-source-code');
+let modal = document.querySelector('.modal');
+
+if (!modal) {
+  modal = document.createElement('div');
+  modal.className = 'modal';
+  document.body.appendChild(modal);
+}
 
 button.addEventListener('dragstart', () => {
   modal.style.display = 'block';
   button.style.zIndex = '999999';
-  document.body.appendChild(modal);
+});
+
+button.addEventListener('dragend', () => {
+  modal.style.display = 'none';
+  button.style.zIndex = '';
 });
   </script>
 </body>
