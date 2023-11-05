@@ -8,10 +8,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>ego</title>
   <style>
-    * {
-      transition: all 0.4s ease;
-    }
-
+* {
+    transition: all 0.4s ease;
+    scroll-behavior: smooth !important;
+}
     body {
     background-color: #333;
     color: #fff;
@@ -385,21 +385,19 @@ header img:hover {
 
   <script>
     function setActiveSection() {
-    const sectionId = window.location.hash.substr(1);
+      const sectionId = window.location.hash.substr(1);
 
-    document.querySelectorAll('section').forEach(section => section.classList.add('hidden', 'fade-in'));
+      document.querySelectorAll('section').forEach(section => section.classList.add('hidden', 'fade-in'));
 
-    const activeSection = document.getElementById(sectionId) || document.getElementById('landing');
-    activeSection.classList.remove('hidden');
-    
-    const yPos = activeSection.getBoundingClientRect().top + window.pageYOffset;
-    window.scrollTo({ top: yPos, behavior: 'smooth' });
+      const activeSection = document.getElementById(sectionId) || document.getElementById('landing');
+      activeSection.classList.remove('hidden');
 
-    const activeMenuItem = document.querySelector(`nav a[href="#${activeSection.id}"]`);
-    document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
-    activeMenuItem.classList.add('active');
+      const activeMenuItem = document.querySelector(`nav a[href="#${activeSection.id}"]`);
+      document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
+      activeMenuItem.classList.add('active');
 
-    setTimeout(() => activeSection.classList.remove('fade-in'), 400);
+
+      setTimeout(() => activeSection.classList.remove('fade-in'), 400);
     }
 
     window.addEventListener('hashchange', setActiveSection);
