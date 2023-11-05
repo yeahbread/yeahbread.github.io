@@ -265,23 +265,31 @@
         text-shadow: -3px 3px 1px black;
     }
     section.hidden {
-        opacity: 0;
-        height: 0;
-        margin-top: 0;
-        margin-bottom: 0;
-        padding: 0;
-        overflow: hidden;
-        }
+  opacity: 0;
+  height: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  overflow: hidden;
+}
 
-    section.showing {
-        opacity: 1;
-        height: max-content;
-        margin-top: 2em;
-        margin-bottom: 1em;
-        padding: 2em;
-        overflow: visible;
-        transition: opacity 0.4s ease, margin-top 0.4s ease, margin-bottom 0.4s ease, padding 0.4s ease, height 0.4s ease;
-        }
+section.showing {
+  opacity: 1;
+  height: max-content;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  padding: 2em;
+  overflow: visible;
+  transition: opacity 0.4s ease, margin-top 0.4s ease, margin-bottom 0.4s ease, padding 0.4s ease, height 0.4s ease;
+}
+
+section.slide-left.showing {
+  transform: translateX(-100%);
+}
+
+section.slide-right.showing {
+  transform: translateX(100%);
+}
   </style>
 </head>
 
@@ -354,36 +362,45 @@
     </section>
   </main>
   <script>
-    function setActiveSection() {
-    // Get the section ID from the URL query
-    const sectionId = window.location.hash.substr(1);
+function setActiveSection() {
+  // Get the section ID from the URL query
+  const sectionId = window.location.hash.substr(1);
 
-    // Hide all sections with sliding effect
-    document.querySelectorAll('section').forEach(section => {
-        section.classList.add('hidden');
-        setTimeout(() => {
-        section.classList.remove('showing');
-        }, 400);
-    });
+  // Get the active menu item
+  const activeMenuItem = document.querySelector(`nav a[href="#${sectionId}"]`);
 
-    // Show the active section with sliding effect
-    const activeSection = document.getElementById(sectionId) || document.getElementById('home');
-    activeSection.classList.remove('hidden');
+  // Calculate the distance from the left and right edges of the screen to the active menu item
+  const itemRect = activeMenuItem.getBoundingClientRect();
+  const leftDistance = itemRect.left;
+  const rightDistance = window.innerWidth - itemRect.right;
+
+  // Hide all sections with sliding effect, from the opposite direction of the active menu item
+  document.querySelectorAll('section').forEach(section => {
+    section.classList.remove('slide-left', 'slide-right'); // reset any previous sliding
+    section.classList.add(leftDistance < rightDistance ? 'slide-right' : 'slide-left');
+    section.classList.add('hidden');
     setTimeout(() => {
-        activeSection.classList.add('showing');
-    }, 50);
+      section.classList.remove('showing');
+    }, 400);
+  });
 
-    // Update the active menu item
-    const activeMenuItem = document.querySelector(`nav a[href="#${activeSection.id}"]`);
-    document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
-    activeMenuItem.classList.add('active');
-    }
+  // Show the active section with sliding effect
+  const activeSection = document.getElementById(sectionId) || document.getElementById('home');
+  activeSection.classList.remove('hidden');
+  setTimeout(() => {
+    activeSection.classList.add('showing');
+  }, 50);
 
-    // Listen for URL hash changes and update the active section with sliding effect accordingly
-    window.addEventListener('hashchange', setActiveSection);
+  // Update the active menu item
+  document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
+  activeMenuItem.classList.add('active');
+}
 
-    // Set the initial active section with sliding effect
-    setActiveSection();
+// Listen for URL hash changes and update the active section with sliding effect accordingly
+window.addEventListener('hashchange', setActiveSection);
+
+// Set the initial active section with sliding effect
+setActiveSection();
   </script>
 	  <script>
     let buttonSrc;
