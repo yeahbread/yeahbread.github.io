@@ -33,20 +33,27 @@
     }
 
     nav {
-      display: flex;
-      gap: 1rem;
+        display: flex;
+        gap: 3rem;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
     }
 
     nav a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: bold;
-      transition: all 0.2s ease;
+        color: #ffffff8c;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: bold;
+        transition: all 0.2s ease;
+        filter: drop-shadow(0px 0px 1px white) drop-shadow(0px 0px 5px white);
     }
 
     nav a:hover {
-      color: #ff0;
+        color: #ffffff2e;
+        border-bottom: 0.1rem #ffffff2e solid;
     }
 
   h1 {
@@ -240,7 +247,10 @@
     }
     
     .active {
-      display: block;
+        display: block;
+        font-size: 1.5rem;
+        margin: -3mm;
+        border-bottom: 0.2rem white solid;
     }
     
   </style>
