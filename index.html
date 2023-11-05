@@ -258,12 +258,30 @@
     }
     p {
         font-size: 1.2rem;
-        padding: 2.6rem;
+        padding: 1.3rem;
     }
     p:hover {
         transform: scale(1.03) skewX(5deg) translate(1mm, -1mm);
         text-shadow: -3px 3px 1px black;
     }
+    section.hidden {
+        opacity: 0;
+        height: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 0;
+        overflow: hidden;
+        }
+
+    section.showing {
+        opacity: 1;
+        height: max-content;
+        margin-top: 2em;
+        margin-bottom: 1em;
+        padding: 2em;
+        overflow: visible;
+        transition: opacity 0.4s ease, margin-top 0.4s ease, margin-bottom 0.4s ease, padding 0.4s ease, height 0.4s ease;
+        }
   </style>
 </head>
 
@@ -337,26 +355,34 @@
   </main>
   <script>
     function setActiveSection() {
-      // Get the section ID from the URL query
-      const sectionId = window.location.hash.substr(1);
+    // Get the section ID from the URL query
+    const sectionId = window.location.hash.substr(1);
 
-      // Hide all sections
-      document.querySelectorAll('section').forEach(section => section.classList.add('hidden'));
+    // Hide all sections with sliding effect
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('hidden');
+        setTimeout(() => {
+        section.classList.remove('showing');
+        }, 400);
+    });
 
-      // Show the active section
-      const activeSection = document.getElementById(sectionId) || document.getElementById('home');
-      activeSection.classList.remove('hidden');
+    // Show the active section with sliding effect
+    const activeSection = document.getElementById(sectionId) || document.getElementById('home');
+    activeSection.classList.remove('hidden');
+    setTimeout(() => {
+        activeSection.classList.add('showing');
+    }, 50);
 
-      // Update the active menu item
-      const activeMenuItem = document.querySelector(`nav a[href="#${activeSection.id}"]`);
-      document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
-      activeMenuItem.classList.add('active');
+    // Update the active menu item
+    const activeMenuItem = document.querySelector(`nav a[href="#${activeSection.id}"]`);
+    document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
+    activeMenuItem.classList.add('active');
     }
 
-    // Listen for URL hash changes and update the active section accordingly
+    // Listen for URL hash changes and update the active section with sliding effect accordingly
     window.addEventListener('hashchange', setActiveSection);
 
-    // Set the initial active section
+    // Set the initial active section with sliding effect
     setActiveSection();
   </script>
 	  <script>
