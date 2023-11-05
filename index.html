@@ -321,12 +321,17 @@
       transform: scale(1.03) skewX(5deg) translate(1mm, -1mm);
       text-shadow: -3px 3px 1px black;
     }
-    header img {
+    .HomeLinkIcon {
     height: 5rem;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
     padding: 1vmin;
+}
+.HomeLinkIcon {
+    height: 5rem;
+    position: absolute;
+    left: 5vmin;
 }
 header img:hover {
     transform: scale(1.03) translateX(-50%) translate(1mm, -1mm) skewX(5deg);
@@ -382,7 +387,9 @@ a:hover {
 
 <body>
     <header>
-        <img id="HomeLinkIcon" src="https://cdn.glitch.global/efbbe251-937e-4c16-898c-cdfb9e3d65f4/smallE?v=1697857602944" alt="Logo">
+        <img id="GithubLinkIcon" src="ttps://raw.githubusercontent.com/yeahbread/yeahbread.github.io/main/GitHub.png" alt="Logo">
+
+        <a target="_blank" href="https://github.com/yeahbread"><img id="HomeLinkIcon" src="https://cdn.glitch.global/efbbe251-937e-4c16-898c-cdfb9e3d65f4/smallE?v=1697857602944" alt="Logo"></a>
         <nav>
           <a href="#landing">Landing</a>
           <a href="#ego-menu">Ego Menu</a>
