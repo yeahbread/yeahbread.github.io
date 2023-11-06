@@ -51,15 +51,13 @@
         transform: scale(1.03) skewX(5deg) translate(1mm, -1mm);
         gap: 4rem;
     }
-    nav {
-    display: flex;
-    gap: 3rem;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    nav a {
+    color: #ffffff8c !important;
+    text-decoration: none;
+    font-size: 1.3vmax;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    filter: drop-shadow(0px 0px 1px white) drop-shadow(0px 0px 5px white);
 }
 
     nav a:hover {
@@ -311,10 +309,10 @@
     }
 
     .active {
-      display: block;
-      font-size: 1.5rem;
-      margin: -3mm;
-      border-bottom: 0.2rem white solid;
+        display: block;
+        font-size: 1.4vmax;
+        margin: -3mm;
+        border-bottom: 0.2rem white solid;
     }
 
     p {
