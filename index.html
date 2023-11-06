@@ -25,38 +25,42 @@
 }
 
     header {
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        justify-content: center;
         align-items: center;
         padding: 1rem;
         background-color: #11111157;
         position: relative;
         box-shadow: 0 1vmax 20px #00000069, inset 1vmax -1vmax 0 #00000069;
+        align-content: center;
+        justify-items: start;
     }
 
     nav {
-        display: flex;
-        gap: 3rem;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-content: center;
-        justify-content: center;
-        align-items: center;
-        right: 4rem;
-        position: relative;
-    }
+    display: flex;
+    gap: 4vmax;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-between;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    justify-items: end;
+}
     nav:hover {
         transform: scale(1.03) skewX(5deg) translate(1mm, -1mm);
         gap: 4rem;
     }
-    nav a {
-        color: #ffffff8c !important;
-        text-decoration: none;
-        font-size: 1.2rem;
-        font-weight: bold;
-        transition: all 0.2s ease;
-        filter: drop-shadow(0px 0px 1px white) drop-shadow(0px 0px 5px white);
-    }
+    nav {
+    display: flex;
+    gap: 3rem;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
 
     nav a:hover {
         color: #ffffff2e !important;
@@ -330,9 +334,9 @@
     padding: 1vmin;
 }
 #GithubLinkIcon {
-    height: 5rem;
+    height: 10vmin;
     position: absolute;
-    left: 10rem;
+    left: 5vmax;
 }
 #GithubLinkIcon:hover {
     transform: scale(1.03) translate(1mm, -1mm);
