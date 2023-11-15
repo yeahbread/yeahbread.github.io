@@ -399,6 +399,11 @@ a:hover {
     backdrop-filter: blur(2px);
     pointer-events: none;
 }
+img.egoLogoCo {
+  width: 12rem;
+  bottom: 0vmax;
+  position: relative;
+}
   </style>
 </head>
 
@@ -421,6 +426,8 @@ a:hover {
     <section id="landing" class="hidden fade-in">
       <h2>Home</h2>
       <p>ego aka <a target="_blank" href="https://github.com/yeahbread">@Yeahbread</a> on github. 🐍</p>
+      <img class="egoLogoCo" src="https://github.com/yeahbread/Ego-Menu-Bookmarklets/blob/main/ego(itterationOne).png?raw=true" alt="ego logo">
+
     </section>
         <section id="chat" class="hidden fade-in">
       <h2>Chatroom</h2>
@@ -460,7 +467,7 @@ a:hover {
       <div id="install-instructions">
         <h2>Installation Instructions</h2>
         <ol id="instruction-holder">
-          <li id="OneInstruction">Press CTRL+SHIFT+B on Windows/Linux/ChromeOS or COMMAND+SHIFT+B on Mac to show the bookmarks bar at the top of your browser window.</li>
+          <li id="OneInstruction">Press CTRL+SHIFT+B on Windows/Linux or COMMAND+SHIFT+B on Mac to show the bookmarks bar at the top of your browser window.</li>
           <li id="OneInstruction">Drag the "Drag Me!" button from below to the bookmarks bar. The installation is complete.</li>
           <button id="ego-source-code" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', buttonSrc)">Drag Me!</button>
           <li id="OneInstruction">Click on the bookmark you just created to activate the Ego Menu on the current page. The Ego Menu popup should appear when you hover over the bottom left corner of the website.</li>
