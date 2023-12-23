@@ -417,6 +417,8 @@ img.egoLogoCo {
                     <a href="#chat">Chat</a>
 
           <a href="#ego-menu">Ego Menu</a>
+          <a href="#rumble-bot">Rumble Bot</a>
+
 
           <a href="#services">Services</a>
           <a href="#contact">Contact</a>
@@ -469,7 +471,7 @@ img.egoLogoCo {
         <ol id="instruction-holder">
           <li id="OneInstruction">Press CTRL+SHIFT+B on Windows/Linux or COMMAND+SHIFT+B on Mac to show the bookmarks bar at the top of your browser window.</li>
           <li id="OneInstruction">Drag the "Drag Me!" button from below to the bookmarks bar. The installation is complete.</li>
-          <button id="ego-source-code" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', buttonSrc)">Drag Me!</button>
+          <button class="sourceDrag" id="ego-source-code" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', buttonSrc)">Drag Me!</button>
           <li id="OneInstruction">Click on the bookmark you just created to activate the Ego Menu on the current page. The Ego Menu popup should appear when you hover over the bottom left corner of the website.</li>
           <li id="OneInstruction">Note that if you navigate to a new page, you might need to activate the menu again using the bookmark. Also, please note that the Ego Menu may not work on some strict websites due to security reasons.</li>
           <li id="OneInstruction">Also note that if your browser is unsupported/outdated this drag method won't work, alternative download method can be found in the README.md file on <a href="https://github.com/yeahbread/Ego-Menu-Bookmarklets" target="_blank">The Ego Menu Project Page</a>.</li>
@@ -480,6 +482,53 @@ img.egoLogoCo {
         <div class="Credits">
           <h3>Staff</h3>
           <p>Ego Menu was made by <a target="_blank" href="https://github.com/yeahbread">@yeahbread</a> and inspiration for tools and games from <a target="_blank" href="https://github.com/dragon731012">@dragon731012</a>.</p>
+        </div>
+
+
+    </section>
+    <section id="rumble-bot" class="hidden fade-in">
+      <h2>Features:</h2>
+      <div class="features">
+        <div class="feature">
+          <h3>Easy "install"</h3>
+          <p>No need to install or download any extensions / application / software / files. Easy and quick bookmarklet that can be applied in seconds.</p>
+        </div>
+
+
+
+        <div class="feature">
+          <h3>No Cooldown</h3>
+          <p>Litterly EVERY SINGLE active stream on <a target="_blank" href="https://rumble.com/">Rumble</a> can be chatted to with the click of one button, no need to wait.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Target just One Stream</h3>
+          <p>Ability to single out on stream and spam their chat. Speaking of spamming, please don't use this for malicious activities</p>
+        </div>
+
+        <div class="feature">
+          <h3>Interval System</h3>
+          <p>Have the ability to set an optional interval between messages.</p>
+        </div>
+      </div>
+
+      <button id="get-ego" onclick="scrollToInstall()">Get Ego</button>
+
+      <div id="install-instructions">
+        <h2>Installation Instructions</h2>
+        <ol id="instruction-holder">
+          <li id="OneInstruction">Press CTRL+SHIFT+B on Windows/Linux or COMMAND+SHIFT+B on Mac to show the bookmarks bar at the top of your browser window.</li>
+          <li id="OneInstruction">Drag the "Drag Me!" button from below to the bookmarks bar. The installation is complete.</li>
+          <button class="sourceDrag" id="rumble-bot-source-code" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', buttonSrc)">Drag Me!</button>
+          <li id="OneInstruction">Head to <a href="https://rumble.com/" target="_blank">Rumble</a>, then click on the new bookmarklet.</li>
+          <li id="OneInstruction">Bot menu should be loaded! If not check console or try again later/contact me!</li>
+
+        </ol>
+
+      </div>
+        <div class="Credits">
+          <h3>Staff</h3>
+          <p>Rumble Spam Bot was made by <a target="_blank" href="https://github.com/yeahbread">@yeahbread</a>.</p>
         </div>
 
 
@@ -527,6 +576,18 @@ img.egoLogoCo {
         egoButton.setAttribute('href', buttonSrc);
       })
       .catch(error => console.log(error));
+
+
+      let rumbleBotButtonSrc;
+
+fetch('https://raw.githubusercontent.com/yeahbread/Rumble-Chat-Spam-Bot/main/main.js')
+  .then(response => response.text())
+  .then(code => {
+    buttonSrc = 'javascript:' + code;
+    const egoButton = document.querySelector('#rumble-bot-source-code');
+    egoButton.setAttribute('href', rumbleBotButtonSrc);
+  })
+  .catch(error => console.log(error));
   </script>
 
   <script>
@@ -546,7 +607,7 @@ img.egoLogoCo {
     });
   </script>
   <script>
-const button = document.getElementById('ego-source-code');
+const button = document.querySelectorAll('#sourceDrag');
 let modal = document.querySelector('.modal');
 
 if (!modal) {
