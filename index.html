@@ -255,7 +255,7 @@
     margin: 1em;
 }
 
-#install-instructions, #install-instructions2 h2 {
+#install-instructions h2, #install-instructions2 h2 {
     color: #baffbc;
     font-size: 4vmax;
     max-width: 75vw;
@@ -267,8 +267,8 @@
     position: relative;
     transform: translateX(-50%);
 }
-#install-instructions,
-#install-instructions2 > h2:hover {
+#install-instructions h2:hover,
+#install-instructions2 h2:hover {
         text-shadow: -3px 3px black;
       transform: translateX(-50%) skewX(5deg) scale(1.03);
     }
@@ -465,9 +465,9 @@ img.egoLogoCo {
         </div>
       </div>
 
-      <button id="get-ego" onclick="scrollToBotInstall()">Get Ego</button>
+      <button id="get-ego" onclick="scrollToInstall()">Get Ego</button>
 
-      <div id="install-instructions2">
+      <div id="install-instructions">
         <h2>Installation Instructions</h2>
         <ol id="instruction-holder">
           <li id="OneInstruction">Press CTRL+SHIFT+B on Windows/Linux or COMMAND+SHIFT+B on Mac to show the bookmarks bar at the top of your browser window.</li>
@@ -597,8 +597,8 @@ fetch('https://raw.githubusercontent.com/yeahbread/Rumble-Chat-Spam-Bot/main/mai
       installInstructions.scrollIntoView({behavior: 'smooth'});
     }
     function scrollToInstall2() {
-      var installInstructions = document.getElementById('install-instructions2');
-      installInstructions.scrollIntoView({behavior: 'smooth'});
+      var installInstructions2 = document.getElementById('install-instructions2');
+      installInstructions2.scrollIntoView({behavior: 'smooth'});
     }
   </script>
 <script>
