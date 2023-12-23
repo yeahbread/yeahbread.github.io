@@ -520,7 +520,7 @@ img.egoLogoCo {
         <ol id="instruction-holder">
           <li id="OneInstruction">Press CTRL+SHIFT+B on Windows/Linux or COMMAND+SHIFT+B on Mac to show the bookmarks bar at the top of your browser window.</li>
           <li id="OneInstruction">Drag the "Drag Me!" button from below to the bookmarks bar. The installation is complete.</li>
-          <button class="sourceDrag" id="rumble-bot-source-code" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', buttonSrc)">Drag Me!</button>
+          <button class="sourceDrag" id="rumble-bot-source-code" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', rumbleBotButtonSrc)">Drag Me!</button>
           <li id="OneInstruction">Head to <a href="https://rumble.com/" target="_blank">Rumble</a>, then click on the new bookmarklet.</li>
           <li id="OneInstruction">Bot menu should be loaded! If not check console or try again later/contact me!</li>
 
@@ -612,28 +612,39 @@ fetch('https://raw.githubusercontent.com/yeahbread/Rumble-Chat-Spam-Bot/main/mai
     });
   </script>
   <script>
-const button = document.querySelectorAll('#sourceDrag');
-let modal = document.querySelector('.modal');
+// Assuming there are multiple buttons with the class 'sourceDrag'
+const buttons = document.querySelectorAll('.sourceDrag');
 
-if (!modal) {
-  modal = document.createElement('div');
-  modal.className = 'modal';
-  modal.style.display = 'none';
-  const p = document.createElement('p');
-  p.textContent = '⬆️ Now drag me up to the bookmark bar above, then release ⬆️';
-  modal.appendChild(p);
-  document.body.appendChild(modal);
+buttons.forEach(button => {
+  button.addEventListener('dragstart', (event) => {
+    const modal = createOrGetModal();
+    modal.style.display = 'block';
+    button.style.zIndex = '999999';
+    // Set data for drag operation
+    event.dataTransfer.setData('text/plain', button.dataset.buttonSrc);
+  });
+
+  button.addEventListener('dragend', () => {
+    const modal = createOrGetModal();
+    modal.style.display = 'none';
+    button.style.zIndex = '';
+  });
+});
+
+function createOrGetModal() {
+  let modal = document.querySelector('.modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.style.display = 'none';
+    const p = document.createElement('p');
+    p.textContent = '⬆️ Now drag me up to the bookmark bar above, then release ⬆️';
+    modal.appendChild(p);
+    document.body.appendChild(modal);
+  }
+  return modal;
 }
 
-button.addEventListener('dragstart', () => {
-  modal.style.display = 'block';
-  button.style.zIndex = '999999';
-});
-
-button.addEventListener('dragend', () => {
-  modal.style.display = 'none';
-  button.style.zIndex = '';
-});
   </script>
   <script>
     const githubLinkIcon = document.getElementById('GithubLinkIcon');
