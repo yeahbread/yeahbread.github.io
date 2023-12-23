@@ -206,7 +206,7 @@
       text-shadow: -3px 3px 0 black !important;
     }
 
-    #get-ego {
+    #get-ego,#get-bot {
       background-color: #203e13;
       border: none;
       border-radius: 1vmin;
@@ -219,14 +219,14 @@
       box-shadow: inset 1vmin -1vmin 0px 0.5mm #00000042;
     }
 
-    #get-ego:hover {
+    #get-ego:hover ,#get-bot:hover {
       background-color: #1ea80e;
       transform: scale(1.03);
       box-shadow: inset 1vmin -1vmin 0px 0.5mm #00000042, -1vmin 1vmin 0px 0mm #000000, -3vmin 3vmin 20px 0mm #0000003d !important;
       color: #ffffff;
     }
 
-    #ego-source-code {
+    #ego-source-code,#rumble-bot-source-code {
         background-color: #35701c;
         border: none;
         border-radius: 1vmin;
@@ -240,13 +240,13 @@
         box-shadow: inset 1vmin -1vmin 0px 0.5mm #00000042;
     }
 
-    #ego-source-code:hover {
+    #ego-source-code:hover ,#rumble-bot-source-code:hover {
       background-color: #35701c;
       box-shadow: inset 1vmin -1vmin 0px 0.5mm #00000042, -1vmin 1vmin 0px 0mm #000000, -3vmin 3vmin 20px 0mm #0000003d !important;
       transform: scale(1.03) translate(1mm, -1mm);
     }
 
-    #install-instructions {
+    #install-instructions, #install-instructions2 {
     background-color: #22222278;
     color: #fff;
     font-size: 1.6em;
@@ -255,7 +255,7 @@
     margin: 1em;
 }
 
-#install-instructions h2 {
+#install-instructions, #install-instructions2 h2 {
     color: #baffbc;
     font-size: 4vmax;
     max-width: 75vw;
@@ -267,8 +267,9 @@
     position: relative;
     transform: translateX(-50%);
 }
-    #install-instructions h2:hover {
-      text-shadow: -3px 3px black;
+#install-instructions,
+#install-instructions2 > h2:hover {
+        text-shadow: -3px 3px black;
       transform: translateX(-50%) skewX(5deg) scale(1.03);
     }
 
@@ -464,9 +465,9 @@ img.egoLogoCo {
         </div>
       </div>
 
-      <button id="get-ego" onclick="scrollToInstall()">Get Ego</button>
+      <button id="get-ego" onclick="scrollToBotInstall()">Get Ego</button>
 
-      <div id="install-instructions">
+      <div id="install-instructions2">
         <h2>Installation Instructions</h2>
         <ol id="instruction-holder">
           <li id="OneInstruction">Press CTRL+SHIFT+B on Windows/Linux or COMMAND+SHIFT+B on Mac to show the bookmarks bar at the top of your browser window.</li>
@@ -512,9 +513,9 @@ img.egoLogoCo {
         </div>
       </div>
 
-      <button id="get-ego" onclick="scrollToInstall()">Get Ego</button>
+      <button id="get-bot" onclick="scrollToInstall2()">Get Bot</button>
 
-      <div id="install-instructions">
+      <div id="install-instructions2">
         <h2>Installation Instructions</h2>
         <ol id="instruction-holder">
           <li id="OneInstruction">Press CTRL+SHIFT+B on Windows/Linux or COMMAND+SHIFT+B on Mac to show the bookmarks bar at the top of your browser window.</li>
@@ -593,6 +594,10 @@ fetch('https://raw.githubusercontent.com/yeahbread/Rumble-Chat-Spam-Bot/main/mai
   <script>
     function scrollToInstall() {
       var installInstructions = document.getElementById('install-instructions');
+      installInstructions.scrollIntoView({behavior: 'smooth'});
+    }
+    function scrollToInstall2() {
+      var installInstructions = document.getElementById('install-instructions2');
       installInstructions.scrollIntoView({behavior: 'smooth'});
     }
   </script>
