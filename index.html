@@ -612,23 +612,44 @@ fetch('https://raw.githubusercontent.com/yeahbread/Rumble-Chat-Spam-Bot/main/mai
     });
   </script>
   <script>
-// Assuming there are multiple buttons with the class 'sourceDrag'
+const buttonConfigs = [
+  {
+    id: 'rumble-bot-source-code',
+    sourceURL: 'https://raw.githubusercontent.com/yeahbread/Rumble-Chat-Spam-Bot/main/main.js'
+  },
+  {
+    id: 'ego-source-code',
+    sourceURL: 'https://raw.githubusercontent.com/yeahbread/Ego-Menu-Bookmarklets/main/bookmarklet.js'
+  }
+];
+
 const buttons = document.querySelectorAll('.sourceDrag');
 
-buttons.forEach(button => {
-  button.addEventListener('dragstart', (event) => {
-    const modal = createOrGetModal();
-    modal.style.display = 'block';
-    button.style.zIndex = '999999';
-    // Set data for drag operation
-    event.dataTransfer.setData('text/plain', button.dataset.buttonSrc);
-  });
+buttons.forEach(async button => {
+  const config = buttonConfigs.find(config => config.id === button.id);
 
-  button.addEventListener('dragend', () => {
-    const modal = createOrGetModal();
-    modal.style.display = 'none';
-    button.style.zIndex = '';
-  });
+  if (config) {
+    try {
+      const response = await fetch(config.sourceURL);
+      const buttonSrc = await response.text();
+
+      button.addEventListener('dragstart', (event) => {
+        const modal = createOrGetModal();
+        modal.style.display = 'block';
+        button.style.zIndex = '999999';
+        // Set data for drag operation
+        event.dataTransfer.setData('text/plain', buttonSrc);
+      });
+
+      button.addEventListener('dragend', () => {
+        const modal = createOrGetModal();
+        modal.style.display = 'none';
+        button.style.zIndex = '';
+      });
+    } catch (error) {
+      console.error(`Error fetching source code for ${config.id}:`, error);
+    }
+  }
 });
 
 function createOrGetModal() {
